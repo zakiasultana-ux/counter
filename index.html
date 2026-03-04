@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,299 @@
 
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/ScrollSmoother.min.js"></script>
 </head>
+
 <body>
-    <h1>welcome to counter info page</h1>
-    <header>
-        
+    <h1 class="hidden">welcome to counter info page</h1>
+    <header class="grid-con">
+        <div class="logo col-span-3 col-start-1 m-col-span-6 m-col-start-1 l-col-span-6 l-col-start-1">
+            <h2>&#268;ounte R</h2>
+        </div>
+        <div class="main-nav col-span-1 col-start-4 m-col-span-6 m-col-start-7 l-col-span-6 l-col-start-7">
+            <div class="hambuger">
+                <object type="image/svg+xml" data="images/hamburger.svg" class="menu-icon"></object>
+            </div>
+            <nav class="site-nav">
+                <ul class="nav-links">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#usage">Usage</a></li>
+                    <li><a href="#inheritance">StepCounter</a></li>
+                    <li><a href="#demo">Live Demo</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
+        <section id="overview" class="section">
+            <div class="grid-con">
+                <div class="col-span-full reveal">
+                    <h2 class="section__title">What is CounterJS?</h2>
+                </div>
 
+                <div class="col-span-full m-col-span-4 reveal">
+                    <div class="card">
+                        <div class="card__icon">⚡</div>
+                        <h3>The Problem</h3>
+                        <p>You need a reusable, stateful counter widget that encapsulates its own markup, events, and
+                            logic — without coupling state to the DOM or scattering handlers across your codebase.</p>
+                    </div>
+                </div>
+
+                <div class="col-span-full m-col-span-4 reveal">
+                    <div class="card">
+                        <div class="card__icon">🎯</div>
+                        <h3>The Solution</h3>
+                        <p>The <code>Counter</code> class uses OOP to keep state, rendering, and event binding in one
+                            place. Pass a CSS selector and an optional starting value — the component renders itself.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-span-full m-col-span-4 reveal">
+                    <div class="card">
+                        <div class="card__icon">🔒</div>
+                        <h3>Key Behaviours</h3>
+                        <p>The counter floor is always <strong>0</strong>. When at zero, the decrement and reset buttons
+                            receive the <code>.counter__btn--inactive</code> class. Every <code>reset()</code> logs
+                            <em>Reset Activated!!!</em> to the console.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="section">
+            <div class="grid-con">
+                <div class="col-span-full reveal">
+                    <h2 class="section__title">Getting Started</h2>
+                    <p class="section__desc">Place a container element in your HTML and give it an ID. Import the class
+                        and instantiate.</p>
+                </div>
+
+                <div class="col-span-full m-col-span-6 reveal">
+                    <p class="code-label">HTML container</p>
+                    <pre class="code-block"><code><span class="c-cm">&lt;!-- Wrapper element in your HTML --&gt;</span>
+&lt;<span class="c-kw">div</span>
+  <span class="c-fn">id</span>=<span class="c-st">"my-counter"</span>
+  <span class="c-fn">class</span>=<span class="c-st">"counter"</span>
+&gt;&lt;/<span class="c-kw">div</span>&gt;</code></pre>
+                </div>
+
+                <div class="col-span-full m-col-span-6 reveal">
+                    <p class="code-label">JS instantiation</p>
+                    <pre class="code-block"><code><span class="c-cm">// main.js (type="module")</span>
+<span class="c-kw">import</span> { <span class="c-cl">Counter</span> } <span class="c-kw">from</span> <span class="c-st">'./counter.js'</span>;
+
+<span class="c-cm">// Counter(selector, initialCount, label)</span>
+<span class="c-kw">const</span> c = <span class="c-kw">new</span> <span class="c-cl">Counter</span>(
+  <span class="c-st">'#my-counter'</span>,
+  <span class="c-nu">0</span>,
+  <span class="c-st">'My Counter'</span>
+);</code></pre>
+                </div>
+
+                <div class="col-span-full reveal">
+                    <h3 class="table-title">Counter — Parameters</h3>
+                    <div class="table-wrap">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="param-name">selector</td>
+                                    <td class="param-type">string</td>
+                                    <td>—</td>
+                                    <td>CSS selector for the container element. Required.</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">initialCount</td>
+                                    <td class="param-type">number</td>
+                                    <td><code>0</code></td>
+                                    <td>Starting count value. Reset returns to this value.</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">label</td>
+                                    <td class="param-type">string</td>
+                                    <td><code>''</code></td>
+                                    <td>Optional heading rendered inside the counter widget.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- API table -->
+                <div class="col-span-full reveal">
+                    <h3 class="table-title">Counter — Public API</h3>
+                    <div class="table-wrap">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Returns</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="param-name">increment()</td>
+                                    <td class="param-type">void</td>
+                                    <td>Increases count by 1 and syncs the UI.</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">decrement()</td>
+                                    <td class="param-type">void</td>
+                                    <td>Decreases count by 1. Prevents values below 0.</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">reset()</td>
+                                    <td class="param-type">void</td>
+                                    <td>Returns to <code>initialCount</code>. Logs "Reset Activated!!!" to console.</td>
+                                </tr>
+                                <tr>
+                                    <td class="param-name">getValue()</td>
+                                    <td class="param-type">number</td>
+                                    <td>Returns the current count without modifying state.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="inheritance" class="section">
+            <div class="grid-con">
+                <div class="col-span-full reveal">
+                    <h2 class="section__title">StepCounter</h2>
+                    <p class="section__desc"><code>StepCounter</code> extends <code>Counter</code> using
+                        <code>extends</code> and <code>super()</code>. It accepts a third <code>step</code> parameter
+                        and overrides <code>increment()</code> and <code>decrement()</code> — every other behaviour is
+                        inherited.
+                    </p>
+                </div>
+
+                <div class="col-span-full reveal">
+                    <div class="diagram">
+                        <div class="diagram__box diagram__box--base">
+                            <span class="diagram__kw">class</span> Counter
+                        </div>
+                        <div class="diagram__arrow">⟵ extends</div>
+                        <div class="diagram__box diagram__box--sub">
+                            <span class="diagram__kw">class</span> StepCounter
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-full m-col-span-6 reveal">
+                    <p class="code-label">Instantiation</p>
+                    <pre class="code-block"><code><span class="c-kw">import</span> { <span class="c-cl">StepCounter</span> } <span class="c-kw">from</span> <span class="c-st">'./counter.js'</span>;
+
+<span class="c-cm">// StepCounter(selector, initialCount, step, label)</span>
+<span class="c-kw">const</span> s = <span class="c-kw">new</span> <span class="c-cl">StepCounter</span>(
+  <span class="c-st">'#step-counter'</span>,
+  <span class="c-nu">0</span>,
+  <span class="c-nu">5</span>,
+  <span class="c-st">'Step ×5'</span>
+);</code></pre>
+                </div>
+
+                <div class="col-span-full m-col-span-6 reveal">
+                    <p class="code-label">Override pattern</p>
+                    <pre class="code-block"><code><span class="c-kw">class</span> <span class="c-cl">StepCounter</span> <span class="c-kw">extends</span> <span class="c-cl">Counter</span> {
+  <span class="c-fn">constructor</span>(sel, init, step, label) {
+    <span class="c-kw">super</span>(sel, init, label);
+    <span class="c-kw">this</span>.step = step;
+  }
+
+  <span class="c-fn">increment</span>() {           <span class="c-cm">// override</span>
+    <span class="c-kw">this</span>.count += <span class="c-kw">this</span>.step;
+    <span class="c-kw">this</span>.update();
+  }
+
+  <span class="c-fn">decrement</span>() {           <span class="c-cm">// override</span>
+    <span class="c-kw">if</span> (<span class="c-kw">this</span>.count &lt;= <span class="c-nu">0</span>) <span class="c-kw">return</span>;
+    <span class="c-kw">this</span>.count = Math.<span class="c-fn">max</span>(<span class="c-nu">0</span>,
+      <span class="c-kw">this</span>.count - <span class="c-kw">this</span>.step);
+    <span class="c-kw">this</span>.update();
+  }
+}</code></pre>
+                </div>
+
+                <div class="col-span-full reveal">
+                    <h3 class="table-title">StepCounter — Additional Parameter</h3>
+                    <div class="table-wrap">
+                        <table class="params-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="param-name">step</td>
+                                    <td class="param-type">number</td>
+                                    <td><code>1</code></td>
+                                    <td>Amount added or subtracted on each increment/decrement action.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="section section--demo">
+            <div class="grid-con">
+                <div class="col-span-full reveal">
+                    <h2 class="section__title">Try it yourself</h2>
+                    <p class="section__desc">Six live instances — three base <code>Counter</code> objects with different
+                        initial values, and three <code>StepCounter</code> objects with step sizes 2, 5, and 10.</p>
+                </div>
+
+                <div class="col-span-full reveal">
+                    <h3 class="demo-group-title">Base Counters <code class="type-tag">Counter</code></h3>
+                </div>
+
+                <div id="counter-container1" class="counter col-span-full m-col-span-4 reveal"></div>
+                <div id="counter-container2" class="counter col-span-full m-col-span-4 reveal"></div>
+                <div id="counter-container3" class="counter col-span-full m-col-span-4 reveal"></div>
+
+                <div class="col-span-full reveal">
+                    <h3 class="demo-group-title" style="margin-top:48px">Step Counters <code
+                            class="type-tag type-tag--teal">StepCounter extends Counter</code></h3>
+                </div>
+
+                <div id="counter-step2" class="counter col-span-full m-col-span-4 reveal"></div>
+                <div id="counter-step5" class="counter col-span-full m-col-span-4 reveal"></div>
+                <div id="counter-step10" class="counter col-span-full m-col-span-4 reveal"></div>
+            </div>
+        </section>
     </main>
 
     <footer>
-
+        <div class="grid-con">
+            <div class="col-span-full">
+                <p>CounterJS · OOP State-Driven UI · Open the console to see reset events</p>
+            </div>
+        </div>
     </footer>
 </body>
+
 </html>
