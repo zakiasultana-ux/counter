@@ -1,7 +1,11 @@
 @font-face {
   font-family: 'logofont';
-  src: url('font/estrella-early.otf') format('opentype');
+  src: url('font/estrella-early.otf') format('opentype'),
+        url('font/Estrella_Early.woff') format('woff'),
+        url('font/Estrella_Early.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
+// @import url(https://db.onlinewebfonts.com/c/b016f0c9207428e5511780c633a06ff4?family=Estrella+Early);
