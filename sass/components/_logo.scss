@@ -8,14 +8,14 @@
     font-weight: normal;
     font-size: 1.6rem;
     letter-spacing: 0.04em;
-    color: abstracts.$text-color;
+    color: abstracts.$primary-color;
     line-height: 1;
     margin: 0;
     user-select: none;
     white-space: nowrap;
 
     span {
-      color: abstracts.$primary-color;
+      color: abstracts.$secondary-color;
       font-size:3.9rem;
       display: inline-block;
       line-height: 1;
