@@ -1,0 +1,53 @@
+@use '../abstracts';
+
+.section {
+  padding: 48px 0;
+
+  @media screen and (min-width:abstracts.$tablet) {
+    padding: 80px 0;
+  }
+
+  @media screen and (min-width:abstracts.$desktop) {
+    padding: 100px 0;
+  }
+
+  &__title {
+    font-family: abstracts.$primary-font;
+    font-size: 2rem;
+    font-weight: 700;
+    color: abstracts.$text-color;
+    margin-bottom: 8px;
+
+    @media screen and (min-width:abstracts.$tablet) {
+      font-size: 2.6rem;
+    }
+
+    @media screen and (min-width:abstracts.$desktop) {
+      font-size: 3rem;
+    }
+  }
+
+  &__desc {
+    font-family: abstracts.$secondary-font;
+    font-size: 0.95rem;
+    color: rgba(abstracts.$text-color, 0.7);
+    line-height: 1.7;
+    max-width: 680px;
+    margin-top: 8px;
+
+    @media screen and (min-width:abstracts.$tablet) {
+      font-size: 1rem;
+    }
+  }
+}
+
+#overview {
+  .section__title {
+    margin-bottom: 32px;
+
+    @media screen and (min-width:abstracts.$tablet) {
+      margin-bottom: 48px;
+    }
+  }
+}
+
