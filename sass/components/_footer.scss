@@ -1,0 +1,22 @@
+@use '../abstracts';
+
+footer {
+    border-top: 1px solid rgba(abstracts.$text-color, 0.08);
+    padding: 24px 0;
+
+    @media screen and (min-width: abstracts.$tablet) {
+      padding: 32px 0;
+    }
+
+    p {
+      font-family: abstracts.$secondary-font;
+      font-size: 0.75rem;
+      color: rgba(abstracts.$text-color, 0.4);
+      letter-spacing: 0.04em;
+      text-align: center;
+
+      @media screen and (min-width: abstracts.$tablet) {
+        font-size: 0.8rem;
+      }
+    }
+  }
