@@ -1,6 +1,7 @@
 @use '../abstracts';
 
 footer {
+  background-color: abstracts.$text-color;
     border-top: 1px solid rgba(abstracts.$text-color, 0.08);
     padding: 24px 0;
 
@@ -11,7 +12,7 @@ footer {
     p {
       font-family: abstracts.$secondary-font;
       font-size: 0.75rem;
-      color: rgba(abstracts.$text-color, 0.4);
+      color: rgba(abstracts.$bg-color, 0.4);
       letter-spacing: 0.04em;
       text-align: center;
 
