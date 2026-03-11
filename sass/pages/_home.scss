@@ -68,3 +68,8 @@
   }
 }
 
+.section--demo {
+  background-color: rgba(abstracts.$text-color, 0.03);
+  border-top: 1px solid rgba(abstracts.$text-color, 0.07);
+  border-bottom: 1px solid rgba(abstracts.$text-color, 0.07);
+}
