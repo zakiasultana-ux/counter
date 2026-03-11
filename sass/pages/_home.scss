@@ -51,3 +51,19 @@
   }
 }
 
+#usage {
+  .code-label {
+    font-family: abstracts.$secondary-font;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: abstracts.$primary-color;
+    margin-bottom: 8px;
+
+    @media screen and (min-width: abstracts.$tablet) {
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+    }
+  }
+}
