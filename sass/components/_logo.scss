@@ -3,6 +3,10 @@
   display: flex;
   align-items: center;
 
+  a{
+    text-decoration: none;
+  }
+
   h2 {
     font-family: abstracts.$logo-font;
     font-weight: normal;

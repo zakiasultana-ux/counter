@@ -1,0 +1,320 @@
+@use '../abstracts';
+@use 'sass:color';
+
+.hero {
+  min-height: calc(100svh - 64px);
+  display: flex;
+  align-items: center;
+  padding: 56px 0 48px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(abstracts.$text-color, 0.07);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .grid-con {
+    position: relative;
+    z-index: 1;
+    align-items: center;
+  }
+
+  @media screen and (min-width: abstracts.$tablet) {
+    min-height: calc(100svh - 80px);
+    padding: 72px 0 64px;
+  }
+
+  @media screen and (min-width: abstracts.$desktop) {
+    padding: 80px 0 72px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 48px;
+
+    @media screen and (min-width: abstracts.$mobile) {
+      gap: 24px;
+      padding-bottom: 56px;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      gap: 28px;
+      padding-bottom: 0;
+      padding-right: 32px;
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      gap: 32px;
+      padding-right: 48px;
+    }
+  }
+
+  &__deco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: abstracts.$tablet) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__ring {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 2px solid rgba(abstracts.$primary-color, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(abstracts.$primary-color, 0.1);
+    }
+
+    &::before {
+      inset: -20px;
+    }
+
+    &::after {
+      inset: -40px;
+      border-color: rgba(abstracts.$primary-color, 0.05);
+    }
+
+    & > :last-child::before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: abstracts.$accent-color;
+      top: -5px;
+      left: calc(50% - 5px);
+      box-shadow: 0 0 12px rgba(abstracts.$accent-color, 0.6);
+      animation: orbit 6s linear infinite;
+      transform-origin: 5px calc(110px + 5px);
+    }
+
+    @media screen and (min-width: abstracts.$mobile) {
+      width: 260px;
+      height: 260px;
+
+      & > :last-child::before {
+        transform-origin: 5px calc(130px + 5px);
+      }
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      width: 300px;
+      height: 300px;
+
+      &::before { inset: -24px; }
+      &::after  { inset: -48px; }
+
+      & > :last-child::before {
+        transform-origin: 5px calc(150px + 5px);
+      }
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      width: 340px;
+      height: 340px;
+
+      &::before { inset: -28px; }
+      &::after  { inset: -56px; }
+
+      & > :last-child::before {
+        transform-origin: 5px calc(170px + 5px);
+      }
+    }
+  }
+
+  &__ring-num {
+    font-family: abstracts.$primary-font;
+    font-size: 6rem;
+    font-weight: 700;
+    color: abstracts.$primary-color;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    position: relative;
+    user-select: none;
+
+    text-shadow:
+      0 0 40px rgba(abstracts.$primary-color, 0.2),
+      0 2px 0 rgba(abstracts.$primary-color, 0.15);
+
+    @media screen and (min-width: abstracts.$mobile) {
+      font-size: 7rem;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      font-size: 8.5rem;
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      font-size: 10rem;
+    }
+  }
+}
+
+.eyebrow {
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: abstracts.$primary-color;
+  opacity: 0.8;
+
+  @media screen and (min-width: abstracts.$mobile) {
+    font-size: 0.75rem;
+  }
+
+  @media screen and (min-width: abstracts.$tablet) {
+    font-size: 0.8rem;
+  }
+}
+
+.hero h1 {
+  font-family: abstracts.$primary-font;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: abstracts.$text-color;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+
+  em {
+    font-style: italic;
+    color: abstracts.$primary-color;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 3px;
+      background-color: abstracts.$accent-color;
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: underline-in 0.6s 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  }
+
+  @media screen and (min-width: abstracts.$mobile) {
+    font-size: 4rem;
+  }
+
+  @media screen and (min-width: abstracts.$tablet) {
+    font-size: 4.8rem;
+  }
+
+  @media screen and (min-width: abstracts.$desktop) {
+    font-size: 5.8rem;
+  }
+}
+
+.hero__desc {
+  font-family: abstracts.$secondary-font;
+  font-size: 0.9rem;
+  color: rgba(abstracts.$text-color, 0.65);
+  line-height: 1.75;
+  max-width: 480px;
+
+  @media screen and (min-width: abstracts.$mobile) {
+    font-size: 0.95rem;
+  }
+
+  @media screen and (min-width: abstracts.$tablet) {
+    font-size: 1rem;
+    max-width: 520px;
+  }
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @media screen and (min-width: abstracts.$mobile) {
+    gap: 10px;
+  }
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: abstracts.$secondary-font;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background-color: rgba(abstracts.$text-color, 0.06);
+  color: rgba(abstracts.$text-color, 0.6);
+  border: 1px solid rgba(abstracts.$text-color, 0.12);
+  white-space: nowrap;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+
+  &:hover {
+    background-color: rgba(abstracts.$text-color, 0.1);
+    color: abstracts.$text-color;
+  }
+
+  @media screen and (min-width: abstracts.$mobile) {
+    font-size: 0.7rem;
+    padding: 6px 14px;
+  }
+
+  @media screen and (min-width: abstracts.$tablet) {
+    font-size: 0.72rem;
+    padding: 6px 16px;
+  }
+
+  &--green {
+    background-color: rgba(#22c55e, 0.1);
+    color: color.adjust(#22c55e, $lightness: -15%);
+    border-color: rgba(#22c55e, 0.3);
+
+    &:hover {
+      background-color: rgba(#22c55e, 0.18);
+    }
+  }
+
+  &--teal {
+    background-color: rgba(abstracts.$primary-color, 0.1);
+    color: abstracts.$primary-color;
+    border-color: rgba(abstracts.$primary-color, 0.3);
+
+    &:hover {
+      background-color: rgba(abstracts.$primary-color, 0.18);
+    }
+  }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg)   translateY(-110px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateY(-110px) rotate(-360deg); }
+}
+
+@keyframes underline-in {
+  to { transform: scaleX(1); }
+}
