@@ -1,0 +1,128 @@
+@use '../abstracts';
+
+#inheritance {
+
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 32px 0;
+
+    @media screen and (min-width: abstracts.$mobile) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      gap: 24px;
+      margin: 48px 0;
+    }
+  }
+
+  .diagram__box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    white-space: nowrap;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    @media screen and (min-width: abstracts.$mobile) {
+      padding: 16px 24px;
+      font-size: 0.95rem;
+      border-radius: 12px;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      padding: 20px 32px;
+      font-size: 1.05rem;
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      padding: 22px 36px;
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(abstracts.$text-color, 0.12);
+    }
+
+    &--base {
+      background-color: abstracts.$primary-color;
+      border: 2px solid abstracts.$primary-color;
+      color: abstracts.$bg-color;
+
+      .diagram__kw {
+        color: rgba(abstracts.$bg-color, 0.65);
+      }
+    }
+
+    &--sub {
+      background-color: rgba(abstracts.$accent-color, 0.1);
+      border: 2px solid abstracts.$accent-color;
+      color: abstracts.$text-color;
+
+      .diagram__kw {
+        color: rgba(abstracts.$text-color, 0.5);
+      }
+    }
+  }
+
+  .diagram__kw {
+    font-style: italic;
+    font-size: 0.85em;
+    font-weight: 400;
+    transition: color 0.2s ease;
+  }
+
+  .diagram__arrow {
+    font-family: abstracts.$secondary-font;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(abstracts.$text-color, 0.45);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    transform: rotate(90deg);
+
+    @media screen and (min-width: abstracts.$mobile) {
+      transform: rotate(0deg);
+      font-size: 0.72rem;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      font-size: 0.78rem;
+      gap: 8px;
+    }
+  }
+
+  .code-label {
+    font-family: abstracts.$secondary-font;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: abstracts.$primary-color;
+    margin-bottom: 8px;
+
+    @media screen and (min-width: abstracts.$tablet) {
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+    }
+  }
+}
