@@ -1,0 +1,182 @@
+@use '../abstracts';
+
+.code-block {
+    background-color: abstracts.$text-color;
+    border: 1px solid rgba(abstracts.$primary-color, 0.25);
+    border-radius: 10px;
+    padding: 20px 16px;
+    overflow-x: auto;
+    margin-bottom: 24px;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    -webkit-overflow-scrolling: touch;
+
+    @media screen and (min-width: abstracts.$mobile) {
+      padding: 22px 20px;
+      font-size: 0.825rem;
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      padding: 28px 24px;
+      font-size: 0.875rem;
+      margin-bottom: 0;
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      padding: 32px 28px;
+      font-size: 0.9rem;
+    }
+
+    code {
+      font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+      color: rgba(abstracts.$bg-color, 0.85);
+      white-space: pre;
+      display: block;
+    }
+    .c-cm { color: rgba(abstracts.$bg-color, 0.38); font-style: italic; }
+    .c-kw { color: abstracts.$secondary-color; }
+    .c-fn { color: #7ec8e3; }
+    .c-st { color: #a8e6a3; }
+    .c-nu { color: #f4a261; } 
+  }
+
+  .table-title {
+    font-family: abstracts.$primary-font;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: abstracts.$text-color;
+    margin-bottom: 16px;
+    margin-top: 40px;
+
+    @media screen and (min-width: abstracts.$mobile) {
+      font-size: 1.55rem;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      font-size: 1.75rem;
+      margin-top: 56px;
+      margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+  }
+
+   .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px;
+    border: 1px solid rgba(abstracts.$primary-color, 0.15);
+    margin-bottom: 8px;
+
+    @media screen and (min-width: abstracts.$tablet) {
+      border-radius: 12px;
+      margin-bottom: 0;
+    }
+
+    // Subtle scrollbar hint on mobile
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(abstracts.$primary-color, 0.05);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(abstracts.$primary-color, 0.3);
+      border-radius: 2px;
+    }
+  }
+
+  .params-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: abstracts.$secondary-font;
+    font-size: 0.8rem;
+
+    @media screen and (min-width: abstracts.$mobile) {
+      font-size: 0.825rem;
+    }
+
+    @media screen and (min-width: abstracts.$tablet) {
+      font-size: 0.875rem;
+    }
+
+    @media screen and (min-width: abstracts.$desktop) {
+      font-size: 0.9rem;
+    }
+
+    // Head row
+    thead tr {
+      background-color: rgba(abstracts.$primary-color, 0.08);
+      border-bottom: 2px solid rgba(abstracts.$primary-color, 0.2);
+    }
+
+    th {
+      padding: 12px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: abstracts.$primary-color;
+      white-space: nowrap;
+
+      @media screen and (min-width: abstracts.$tablet) {
+        padding: 14px 20px;
+        font-size: 0.73rem;
+      }
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(abstracts.$text-color, 0.07);
+      transition: background-color 0.15s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: rgba(abstracts.$primary-color, 0.04);
+      }
+    }
+
+    td {
+      padding: 12px 14px;
+      color: rgba(abstracts.$text-color, 0.8);
+      line-height: 1.6;
+      vertical-align: top;
+
+      @media screen and (min-width: abstracts.$tablet) {
+        padding: 14px 20px;
+      }
+
+      code {
+        font-size: 0.8em;
+        background-color: rgba(abstracts.$primary-color, 0.1);
+        color: abstracts.$primary-color;
+        padding: 1px 5px;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+    }
+
+    .param-name {
+      font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+      font-size: 0.82em;
+      color: abstracts.$text-color;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .param-type {
+      font-style: italic;
+      color: abstracts.$primary-color;
+      white-space: nowrap;
+    }
+  }
