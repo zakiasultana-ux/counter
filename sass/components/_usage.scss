@@ -78,7 +78,6 @@
       margin-bottom: 0;
     }
 
-    // Subtle scrollbar hint on mobile
     &::-webkit-scrollbar {
       height: 4px;
     }
@@ -111,7 +110,6 @@
       font-size: 0.9rem;
     }
 
-    // Head row
     thead tr {
       background-color: rgba(abstracts.$primary-color, 0.08);
       border-bottom: 2px solid rgba(abstracts.$primary-color, 0.2);
